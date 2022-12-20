@@ -8,8 +8,8 @@ DDS (“Det Danske Sentimentleksikon” - ‘The Danish Sentiment Lexicon’) is
 
 The dataset was compiled by
 Sanni Nimb, Sussi Olsen, Thomas Troelsgård
- version 0.1
- 2021-04-14
+ version 0.2
+ 2022-12-20
 
  License: CC-BY-SA 4.0 International <https://creativecommons.org/licenses/by-sa/4.0/>
 
@@ -20,7 +20,7 @@ If you use this dataset or derivatives of it, please refer to the publishers: De
 ----------------------------------------------------------------------------------------------
 
 
-The DDS dataset presents a negative or positive polarity value of 13.859 Danish headwords from DDO. It is available in two formats, one format where the headword is the entry and where the word forms (full forms, text forms) of it are presented as a list (list 2), and one format where the word forms are entries (list 2a):
+The DDS dataset presents a negative or positive polarity value of 14.008 Danish headwords from DDO. The headword is the entry and the word forms (full forms, text forms) of it are presented as a list:
 
 
 Format, filename 2_headword_headword_polarity:
@@ -28,11 +28,8 @@ Format, filename 2_headword_headword_polarity:
 
 
 
-Format, filename 2a_fullform_headword_polarity:
-<word form>tab<headword>tab<homograph number>tab<part of speech>tab<DDO headword ID>tab<polarity label headword>
 
-
-<polarity label headword> = "-3" (highest degree negative) |"-2" (high degree negative) | "-1" (negative) | "1" (positive)| "2" (high degree positive)| "3" (highest degree positive)
+<polarity label headword> = "-5" (maximum degree negative)|"-4" (very high degree negative)|"-3" (high degree negative) |"-2" (degree negative) | "-1" (low degree negative) | "1" (low degree positive)| "2" (degree positive)|"3" (high degree positive)|"4" (very high degree positive)| "5" (maximum degree positive)
 
 
 <homograph number> = NONE (no homographs) | "1" | "2" | "3" | "4" | "5"
@@ -47,30 +44,34 @@ Format, filename 2a_fullform_headword_polarity:
 Statistics
 
 
-Part of speech: 7.803 sb.,  3.884 adj., 1.906 vb., 96 udråbsord, 78 adv., 57 sb.pl., 1 sidsteled (-narkoman), 3 egennavn (Pærekøbing, Udkantsdanmark, Waterloo), 3 fork. (dir., dr., m.v.h.), 14 førsteled, 6 lydord, 2 pron. (nada, nul)), 1 konj. (jamen))
+Part of speech: 7.904 sb.,  3.916 adj., 1.924 vb., 90 udråbsord, 77 adv., 57 sb.pl., 1 sidsteled (-narkoman), 3 egennavn (Pærekøbing, Udkantsdanmark, Waterloo), 3 fork. (dir., dr., m.v.h.), 14 førsteled, 6 lydord, 2 pron. (nada, nul)), 1 konj. (jamen))
 
 
-13.859 headwords assigned either the polarity value 1,2, 3,-1,-2, or -3.
+14.007 headwords assigned either the polarity value 1,2, 3,4,5, -1,-2,-3,-4 or -5.
 
 
- 22 % of the headwords  have the value "1" (positive)
- 12 %  of the headwords have the value "2" (high degree positive)
- 4 %  of the headwords have the value "3" (highest degree positive)
- 28 %  of the headwords have the value "-1" (negative)
- 27 %  of the headwords have the value "-2" (high degree negative)
- 7 %  of the headwords have the value "-3" (highest degree negative)
+ 3048 headwords  have the value "1"
+ 1690 headwords have the value "2"
+ 407 headwords have the value "3"
+98 headwords have the value "4"
+81 headwords have the value "5"
+ 3835 headwords have the value "-1"
+ 3694 headwords have the value "-2"
+ 961 headwords have the value "-3"
+161 headwords have the value "-4"
+33 headwords have the value "-5"
 
-62 %  of the headwords have a negative polarity (-1, -2, or -3)
-38 %  of the headwords have a positive polarity (1, 2, or 3)
+62 %  of the headwords have a negative polarity (-1, -2, -3, -4 or -5)
+38 %  of the headwords have a positive polarity (1, 2, 3, 4 or 5)
 
 
-50 % of the headwords, approx. 6,900 headwords, have a high or very high polarity degree (either 2, 3, -2 or -3).
+12 % of the headwords have a very high polarity degree (either 3, 4, 5, -3, -4, -5).
 
 
 Method
 
 
-The DDS dataset assigns polarity value to 13.859 headwords. It was compiled in the following way:
+The DDS dataset assigns polarity value to 14.007 headwords. It was compiled in the following way:
 
 
 Step 1: Extraction of lexical data from DDO and DDB: Approx. ¼ of the 888 sections in the thesaurus DDB were selected as either negative or positive sections based on the section title. E.g. the section with the title “Vrede” (‘Anger’) was estimated to contain negative words, and the section with the title “Medfølelse” (‘compassion’) was estimated to contain positive words, Also thesaurus sections which were estimated to contain either negative or positive words, or both, were included. Words in DDB are linked at sense level to the DDO dictionary, and via the links all the DDO-senses (from single headwords, not MWU’s) represented in the selected DDB sections were extracted for annotation. Furthermore the lexical data to be annotated was supplemented with not already included DDO senses labeled ‘derogatory’. The total inout data to be annotated consisted of 19,000 unique senses.
@@ -91,12 +92,9 @@ Step 5: Direct inclusion of a part of the annotated data: The result of the anno
 Step 6: Extra annotation of diverging data: Opposite to this, headwords of which the annotated senses diverged w.r.t. polarity (negative, neutral and/or positive as well a degree of negativity or positivity) were studied and annotated a second time in order to assign a polarity value at headword level.  The assignment of polarity value at headword level was based on studies of the sense descriptions in DDO, on corpus studies of the words, but also on subjective judgements taking into consideration the neutral DDO-senses which were not part of the annotated data. In this process, A) headwords with a common neutral sense and a rare polarity sense were removed from the dataset. B) Headwords with two opposite polarity senses which were both estimated to be frequent were removed from the dataset (e.g. frelst, sej, skarp, overlegen, glat). And 3) homographs having diverging polarity values were removed from the dataset if they were both frequent words in Danish. A total of 595 headwords were in this way removed from the sense annotated dataset due to diverging polarity values of their senses or homographs. The remaining headwords were included in the final dataset.
 
 
-The result was 13.859 headwords assigned either the polarity value 1,2,3,-1,-2, or -3.
+The result was 13.859 headwords assigned either the polarity value 1,2,3,-1,-2, or -3. This constituted the first version of the lexicon which was released in June 2021.
 
-
-Remarks
-The first version of the DDS dataset does not contain all the DDO headwords that have at least one polarity sense, but most of them. Negative words which are not part of the extracted sections in DDB (estimated to contain polarity words), neither labelled ‘derogatory’ in DDO, might still have to be added.
-
+In December 2022 the second version was released. Approx. 20 lemmas causing mistakes have been removed and approx 170 new lemmas have been added. The degree values have been extended with 4 and 5, assigned to approx. 400 lemmas based on information in DDO
 
 There is a many-to-many relationship between headwords and text word forms.This means that a text word form may have more than one sentiment label attached to it if a certain word form is connected to more than one headword. For example, the text word form /fred/ will correspond to the noun "fred..1" (‘peace; quiteness etc.’) as well as the verb "frede..1" (‘to protect etc.’), with polarity labels "2" and "1", respectively.
 
